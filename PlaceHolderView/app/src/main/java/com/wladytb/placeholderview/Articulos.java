@@ -12,6 +12,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.wladytb.placeholderview.Holder.HolderArticulo;
+import com.wladytb.placeholderview.Holder.RevistasHolder;
+import com.wladytb.placeholderview.Model.Articulo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +41,20 @@ public class Articulos extends AppCompatActivity{
                 try {
                     for(int i=0;i<response.length();i++)
                     {
-                        listArticulos.addView(new HolderArticulo(getApplicationContext(),response.getJSONObject(i)));
+                        Articulo articulo= new Articulo();
+                        articulo.setDate_published(response.getJSONObject(i).getString("date_published"));
+                        articulo.setTitle(response.getJSONObject(i).getString("title"));
+                        articulo.setDoi(response.getJSONObject(i).getString("doi"));
+                        articulo.setSection(response.getJSONObject(i).getString("section"));
+                        articulo.setPublication_id(response.getJSONObject(i).getString("publication_id"));
+                        articulo.setAbstractt(response.getJSONObject(i).getString("abstract"));
+                        articulo.setSubmission_id(response.getJSONObject(i).getString("submission_id"));
+                        articulo.setSection_id(response.getJSONObject(i).getString("section_id"));
+                        articulo.setSeq(response.getJSONObject(i).getString("seq"));
+                        articulo.setGaleys(response.getJSONObject(i).getString("galeys"));
+                        articulo.setSeq(response.getJSONObject(i).getString("seq"));
+                        listArticulos.addView(new HolderArticulo(getApplicationContext(),articulo,response.getJSONObject(i),
+                                response.getJSONObject(i).getJSONArray("authors")));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

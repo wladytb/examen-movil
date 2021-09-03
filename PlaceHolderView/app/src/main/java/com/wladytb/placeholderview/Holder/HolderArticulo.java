@@ -1,6 +1,8 @@
 package com.wladytb.placeholderview.Holder;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.TextView;
@@ -10,6 +12,7 @@ import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
+import com.wladytb.placeholderview.Model.Articulo;
 import com.wladytb.placeholderview.R;
 
 import org.json.JSONArray;
@@ -32,21 +35,20 @@ public class HolderArticulo {
     @View(R.id.idAutores)
     TextView TextAutores;
     Context mcontext;
+    Articulo articulo;
+    JSONArray jsonArrayAutores;
     JSONObject jsonObject;
 
-
     @Click(R.id.idBtnDescarga)
-    public void clickItemVolumen() {
-        try {
-            JSONArray js = jsonObject.getJSONArray("galeys");
-            for (int i = 0; i < js.length(); i++) {
-                String url = js.getJSONObject(i).getString("UrlViewGalley");
-                DescargarPDF(url);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public void descargar() {
+        String url = articulo.getDoi();
+        System.out.println(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        mcontext.startActivity(intent);
     }
+
+    Context context;
 
     public void DescargarPDF(String urllink) {
         try {
@@ -61,7 +63,7 @@ public class HolderArticulo {
             Log.v("PdfManager", "PATH: " + Path);
             File file = new File(Path);
             file.mkdirs();
-            FileOutputStream fos = new FileOutputStream("tusitio.pdf");
+            FileOutputStream fos = new FileOutputStream("articulo.pdf");
             InputStream is = c.getInputStream();
             byte[] buffer = new byte[702];
             int len1 = 0;
@@ -77,35 +79,27 @@ public class HolderArticulo {
     }
 
 
-    public HolderArticulo(Context mcontext, JSONObject jsonObject) {
+    public HolderArticulo(Context mcontext, Articulo articulo, JSONObject jsonGaleys, JSONArray jsonArrayAutores) {
         this.mcontext = mcontext;
-        this.jsonObject = jsonObject;
+        this.articulo = articulo;
+        this.jsonArrayAutores = jsonArrayAutores;
+        this.jsonObject = jsonGaleys;
     }
 
     @Resolve
     public void onResolved() {
-
-        try {
-            this.TextTitulo.setText(jsonObject.getString("title"));
-            this.TextAutores.setText(autoresResult(jsonObject));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        this.TextTitulo.setText(articulo.getTitle());
+        this.TextAutores.setText(autoresResult(jsonArrayAutores));
     }
 
-    private String autoresResult(JSONObject object) {
+    private String autoresResult(JSONArray jsonArray) {
         String Autores = "";
 
+        if (jsonArray.length() > 1)
+            Autores = "Autores: ";
+        else
+            Autores = "Autor: ";
         try {
-            if (jsonObject.getJSONArray("authors").length() > 1)
-                Autores = "Autores: ";
-            else
-                Autores = "Autor: ";
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            JSONArray jsonArray = jsonObject.getJSONArray("authors");
             for (int i = 0; i < jsonArray.length(); i++) {
                 Autores += jsonArray.getJSONObject(i).getString("nombres") + ", ";
             }
