@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+    <androidx.cardview.widget.CardView
+        android:id="@+id/listaVolumen"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_weight="0.3"
+        app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgPortada"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/idVolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Volumen"/>
+                <TextView
+                    android:id="@+id/idNumero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Número"
+                    />
+                <TextView
+                    android:id="@+id/idAnio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Año"
+                    />
+                <TextView
+                    android:id="@+id/idFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha"
+                    />
+                <TextView
+                    android:id="@+id/idDoi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Doi"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

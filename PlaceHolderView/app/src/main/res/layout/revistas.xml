@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+
+    <LinearLayout
+        android:id="@+id/liPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp">
+
+        <ImageView
+            android:id="@+id/imgPortada"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/idTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="título"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/idDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="descripción" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
