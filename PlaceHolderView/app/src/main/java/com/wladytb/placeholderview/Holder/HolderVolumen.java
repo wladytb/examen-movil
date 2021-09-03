@@ -14,10 +14,9 @@ import com.squareup.picasso.Picasso;
 import com.wladytb.placeholderview.Articulos;
 import com.wladytb.placeholderview.Model.VolumenesM;
 import com.wladytb.placeholderview.R;
-import com.wladytb.placeholderview.Volumenes;
 
 @NonReusable
-@Layout(R.layout.volumeneslist)
+@Layout(R.layout.volumenes)
 public class HolderVolumen {
     @View(R.id.idListVolumenes)
     PlaceHolderView PlaceHolderView;
@@ -51,11 +50,11 @@ public class HolderVolumen {
     }
     @Resolve
     public void onResolved() {
-        this.TextVolumen.setText(volumen.getVolume());
-        this.TxtNumero.setText(volumen.getNumber());
-        this.TxtAnio.setText(volumen.getYear());
-        this.TxtFecha.setText(volumen.getDate_published());
-        this.TxtDoi.setText(volumen.getDoi());
+        this.TextVolumen.setText("Volumen:"+volumen.getVolume());
+        this.TxtNumero.setText("Número: "+volumen.getNumber());
+        this.TxtAnio.setText("Año: "+volumen.getYear());
+        this.TxtFecha.setText("Publicación: "+volumen.getDate_published());
+        this.TxtDoi.setText("Doi: "+volumen.getDoi());
         Picasso.with(mcontext).load(volumen.getCover()).into(Importada);
     }
 }

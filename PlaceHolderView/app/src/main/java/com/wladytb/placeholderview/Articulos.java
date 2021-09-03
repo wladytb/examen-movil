@@ -23,6 +23,7 @@ public class Articulos extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articulos);
+        getSupportActionBar().hide();
         id = getIntent().getExtras().getString("idVolumen");
         listArticulos = findViewById(R.id.listArticulos);
        consumirGoolgeVolley();

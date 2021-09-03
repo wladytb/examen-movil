@@ -8,22 +8,29 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/listaVolumen"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="wrap_content"
         android:layout_weight="0.3"
         app:cardCornerRadius="10dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="135dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="#E3E4E5"
+            android:gravity="center"
+            >
             <ImageView
                 android:id="@+id/imgPortada"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@android:drawable/btn_star_big_on" />
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/btn_star_big_on"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp">
                 <TextView
                     android:id="@+id/idVolumen"
                     android:layout_width="match_parent"
@@ -34,24 +41,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Número"
+                    android:layout_marginTop="5dp"
                     />
                 <TextView
                     android:id="@+id/idAnio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Año"
+                    android:layout_marginTop="5dp"
                     />
                 <TextView
                     android:id="@+id/idFecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Fecha"
+                    android:layout_marginTop="5dp"
                     />
                 <TextView
                     android:id="@+id/idDoi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Doi"
+                    android:layout_marginTop="5dp"
                     />
             </LinearLayout>
         </LinearLayout>

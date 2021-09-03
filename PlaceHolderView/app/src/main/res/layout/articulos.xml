@@ -7,7 +7,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="5dp"
+        android:background="#E3E4E5">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,20 +23,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Titulo"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:justificationMode="inter_word"
                 />
-
             <TextView
                 android:id="@+id/idAutores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descriccion" />
-            <Button
-                android:id="@+id/idbtnDescarga"
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:text="PDF"
-
-                />
+                android:text="Autores"
+                android:layout_marginTop="5dp"
+                android:textSize="13dp"
+                android:justificationMode="inter_word"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <Button
+                    android:id="@+id/idBtnDescarga"
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:text="PDF"
+                    android:layout_marginRight="5dp"
+                    android:backgroundTint="#009C8C"
+                    />
+                <Button
+                    android:id="@+id/idBtnHtml"
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:text="HTML"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="#009C8C"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

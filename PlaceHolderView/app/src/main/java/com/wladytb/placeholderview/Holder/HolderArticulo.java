@@ -1,8 +1,10 @@
 package com.wladytb.placeholderview.Holder;
+
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.TextView;
+
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
@@ -33,21 +35,18 @@ public class HolderArticulo {
     JSONObject jsonObject;
 
 
-    @Click(R.id.idbtnDescarga)
-    public void clicItemVolumen(){
+    @Click(R.id.idBtnDescarga)
+    public void clickItemVolumen() {
         try {
-            JSONArray js =   jsonObject.getJSONArray("galeys");
-            for(int i=0;i<js.length();i++)
-            {
-              String url = js.getJSONObject(i).getString("UrlViewGalley");
+            JSONArray js = jsonObject.getJSONArray("galeys");
+            for (int i = 0; i < js.length(); i++) {
+                String url = js.getJSONObject(i).getString("UrlViewGalley");
                 DescargarPDF(url);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        // mcontext.startActivity(new Intent(mcontext, Articulos.class).putExtra("id",volumeneslist.getIssue_id()));
     }
-
 
     public void DescargarPDF(String urllink) {
         try {
@@ -78,11 +77,11 @@ public class HolderArticulo {
     }
 
 
-
     public HolderArticulo(Context mcontext, JSONObject jsonObject) {
         this.mcontext = mcontext;
         this.jsonObject = jsonObject;
     }
+
     @Resolve
     public void onResolved() {
 
@@ -93,17 +92,24 @@ public class HolderArticulo {
             e.printStackTrace();
         }
     }
-    private String autoresResult(JSONObject object)
-    {
+
+    private String autoresResult(JSONObject object) {
         String Autores = "";
+
+        try {
+            if (jsonObject.getJSONArray("authors").length() > 1)
+                Autores = "Autores: ";
+            else
+                Autores = "Autor: ";
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         try {
             JSONArray jsonArray = jsonObject.getJSONArray("authors");
-            for(int i=0;i<jsonArray.length();i++)
-            {
-                Autores +="Nombre"+jsonArray.getJSONObject(i).getString("name")+
-                "Filiacion"+jsonArray.getJSONObject(i).getString("filiacion");
-
+            for (int i = 0; i < jsonArray.length(); i++) {
+                Autores += jsonArray.getJSONObject(i).getString("nombres") + ", ";
             }
+            Autores = Autores.substring(0, Autores.length() - 2);
         } catch (JSONException e) {
             e.printStackTrace();
         }

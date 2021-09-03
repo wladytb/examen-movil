@@ -24,6 +24,7 @@ public class Volumenes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volumenes);
+        getSupportActionBar().hide();
         id = (String) getIntent().getExtras().get("idRevista");
         listViewVolumenes = findViewById(R.id.idListVolumenes);
         consumirGoolgeVolley();

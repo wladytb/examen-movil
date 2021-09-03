@@ -17,11 +17,11 @@ import java.util.ArrayList;
 public class AdapterVolumenes extends ArrayAdapter<VolumenesM> {
 
     public AdapterVolumenes(Context context, ArrayList<VolumenesM> datos) {
-        super(context, R.layout.volumeneslist, datos);
+        super(context, R.layout.volumenes, datos);
     }
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View item = inflater.inflate(R.layout.volumeneslist, null);
+        View item = inflater.inflate(R.layout.volumenes, null);
         TextView volumen,number,year,datapublisher, doi;
         ImageView img;
         volumen = item.findViewById(R.id.idVolumen);
