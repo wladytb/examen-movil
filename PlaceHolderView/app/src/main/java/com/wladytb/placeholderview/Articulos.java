@@ -12,7 +12,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.wladytb.placeholderview.Holder.HolderArticulo;
-import com.wladytb.placeholderview.Holder.RevistasHolder;
 import com.wladytb.placeholderview.Model.Articulo;
 
 import org.json.JSONArray;

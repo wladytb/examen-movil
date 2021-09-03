@@ -54,9 +54,7 @@ public class HolderArticulo {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         mcontext.startActivity(intent);
     }
-
     Context context;
-
     public void DescargarPDF(String urllink) {
         try {
             URL url = new URL(urllink);

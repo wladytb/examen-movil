@@ -23,7 +23,7 @@
                 android:id="@+id/imgPortada"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/btn_star_big_on"
+                app:srcCompat="@android:drawable/btn_dialog"
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="4dp"/>
             <LinearLayout
