@@ -48,11 +48,17 @@ public class HolderArticulo {
         mcontext.startActivity(intent);
     }
 
+    @Click(R.id.idBtnHtml)
+    public void irToPage() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://revistas.uteq.edu.ec/index.php/cyt/article/view/"+articulo.getSubmission_id()));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        mcontext.startActivity(intent);
+    }
+
     Context context;
 
     public void DescargarPDF(String urllink) {
         try {
-
             URL url = new URL(urllink);
             HttpURLConnection c = (HttpURLConnection) url.openConnection();
             c.setRequestMethod("GET");
@@ -99,6 +105,7 @@ public class HolderArticulo {
             Autores = "Autores: ";
         else
             Autores = "Autor: ";
+
         try {
             for (int i = 0; i < jsonArray.length(); i++) {
                 Autores += jsonArray.getJSONObject(i).getString("nombres") + ", ";
